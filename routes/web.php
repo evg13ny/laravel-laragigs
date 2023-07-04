@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Models\Listing;
 
 /*
@@ -24,23 +23,8 @@ Route::get('/', function () {
 });
 
 // Single Listing
-Route::get('/listings/{id}', function ($id) {
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
-
-/* Route::get('/hello', function () {
-    return response('<h1>Hello World!</h1>', 200)
-        ->header('Content-Type', 'text/plain')
-        ->header('foo', 'bar');
-});
-
-Route::get('/posts/{id}', function ($id) {
-    // ddd($id);
-    return response('Post ' . $id);
-})->where('id', '[0-9]+');
-
-Route::get('/search', function (Request $request) {
-    return $request->name . ' ' . $request->city;
-}); */
