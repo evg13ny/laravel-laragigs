@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    //Show Register/Create Form
+    // Show Register/Create Form
     public function create()
     {
         return view('users.register');
@@ -23,7 +23,7 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        //Hash Password
+        // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
 
         // Create User
@@ -32,6 +32,17 @@ class UserController extends Controller
         // Login
         auth()->login($user);
 
-        return redirect('/')->with('message', 'User created and logged in');
+        return redirect('/')->with('message', 'User created and logged in successfully');
+    }
+
+    // Log User Out
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logout successfully');
     }
 }
