@@ -106,7 +106,7 @@
                     Update Gig
                 </button>
 
-                <a href="http://localhost/laravel-laragigs/public" class="text-black ml-4"> Back </a>
+                <a href="http://localhost/laravel-laragigs/public/listings/manage" class="text-black ml-4"> Back </a>
             </div>
         </form>
     </x-card>
